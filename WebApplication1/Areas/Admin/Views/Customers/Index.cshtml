@@ -1,0 +1,65 @@
+﻿@model X.PagedList.IPagedList<WebApplication1.Models.Customer>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Quản lí khách hàng </h1>
+
+<p>
+    <a class="btn btn-inverse-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID 
+            </th>
+            <th>
+                Họ và tên 
+            </th>
+            <th>
+                Email 
+            </th>
+            <th>
+                Số điện thoại 
+            </th>
+            <th>
+                Địa chỉ 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a class="btn btn-inverse-info" asp-route-id="@item.CustomerId">Edit</a> 
+                <a class="btn btn-inverse-success" asp-action="Details" asp-route-id="@item.CustomerId">Details</a> 
+                <a class="btn btn-inverse-danger" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

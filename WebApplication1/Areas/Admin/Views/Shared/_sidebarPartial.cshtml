@@ -1,0 +1,72 @@
+﻿
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">
+                <div class="nav-profile-image">
+                    <img src="assets/images/faces/face1.jpg" alt="profile">
+                    <span class="login-status online"></span>
+                    <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                    <span class="font-weight-bold mb-2">David Grey. H</span>
+                    <span class="text-secondary text-small">Project Manager</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+            </a>
+        </li>
+        <!--quan ly quyen truy cap-->
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-one" aria-expanded="true" aria-controls="ui-one">
+                <span class="menu-title">Quản lý quyền truy cập </span>
+                <i class="mdi mdi-account-key menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-one">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Users" asp-action="Index">quản lý người dùng </a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Roles" asp-action="Index">Quyền truy cập </a></li>
+                </ul>
+            </div>
+        </li>
+        <!--quan ly khach hang-->
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Customers" asp-action="Index">
+                <span class="menu-title">Quản lý Khách hàng </span>
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+            </a>
+        </li>
+        <!--quan ly san pham-->
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Quản lý Sản Phẩm  </span>
+                <i class="mdi mdi-medical-bag menu-icon"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="Index" >Danh mục sản phẩm </a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Products" asp-action="Index" >Sản phẩm </a></li>
+                </ul>
+            </div>
+        </li>
+        <!--quan ly hoa don-->
+        <li class="nav-item">
+            <a class="nav-link">
+                <span class="menu-title">Quản lý Hóa đơn  </span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+            </a>
+        </li>
+        <!--thong ke-->
+        <li class="nav-item">
+            <a class="nav-link">
+                <span class="menu-title">Thống Kê </span>
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

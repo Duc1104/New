@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApplication1.Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Quyền truy cập </h1>
+
+<p>
+    <a class="btn btn-inverse-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a class="btn btn-inverse-info" asp-action="Details" asp-route-id="@item.RoleId">Details</a>
+                <a class="btn btn-inverse-success" asp-action="Edit" asp-route-id="@item.RoleId">Edit</a>
+                <a class="btn btn-inverse-danger" asp-action="Delete" asp-route-id="@item.RoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,76 @@
+﻿@model X.PagedList.IPagedList<WebApplication1.Models.Product>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Quản lí sản phẩm</h1>
+
+<p>
+    <a class="btn btn-inverse-dark" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên sản phẩm 
+            </th>
+            <th>
+                Hình ảnh 
+            </th>
+            <th>
+                Giá 
+            </th>
+            <th>
+                Số lượng 
+            </th>
+            <th>
+                kích thước 
+            </th>
+            <th>
+                Màu sắc 
+            </th>
+            <th>
+                Loại sản phẩm 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a class="btn btn-inverse-info" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a>
+                <a class="btn btn-inverse-success" asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+                <a class="btn btn-inverse-danger" asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
